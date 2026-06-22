@@ -1,0 +1,642 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  heroPage?: boolean;
+  bodyBg?: string;
+  ogImage?: string;
+}
+const {
+  title,
+  description = 'Vexai bouwt intelligente AI-assistenten die jouw klantcontact overnemen — via chat, WhatsApp en telefoon. Altijd bereikbaar. Nooit offline.',
+  heroPage = false,
+  bodyBg = '#ffffff',
+  ogImage = 'https://www.vexai.nl/og-default.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://www.vexai.nl');
+---
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph (social sharing + Google rich results) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Vexai" />
+  <meta property="og:locale" content="nl_NL" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;700&family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries" is:inline></script>
+  <script is:inline>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface":                "#f9f9f9",
+            "surface-bright":         "#f9f9f9",
+            "surface-variant":        "#e2e2e2",
+            "surface-container":      "#eeeeee",
+            "surface-container-low":  "#f3f3f3",
+            "surface-container-high": "#e8e8e8",
+            "surface-container-highest":"#e2e2e2",
+            "surface-container-lowest":"#ffffff",
+            "surface-dim":            "#dadada",
+            "on-surface":             "#1a1c1c",
+            "on-surface-variant":     "#444748",
+            "outline":                "#747878",
+            "outline-variant":        "#c4c7c7",
+            "background":             "#f9f9f9",
+            "primary":                "#000000",
+            "primary-container":      "#1c1b1b",
+            "on-primary":             "#ffffff",
+            "on-primary-container":   "#858383",
+            "secondary-auralis":      "#666666",
+            "on-secondary":           "#ffffff",
+            "secondary":              "#5e5e5e",
+            "primary-orange":         "#ff571c",
+            "tertiary":               "#000000",
+            "on-tertiary":            "#ffffff",
+            "error":                  "#ba1a1a",
+            "inverse-surface":        "#2f3131",
+            "inverse-on-surface":     "#f0f1f1",
+          },
+          fontFamily: {
+            "body":       ["Inter", "Geist", "sans-serif"],
+            "body-md":    ["Inter", "Geist", "sans-serif"],
+            "body-lg":    ["Inter", "Geist", "sans-serif"],
+            "h1":         ["Geist", "Inter", "sans-serif"],
+            "h2":         ["Geist", "Inter", "sans-serif"],
+            "h3":         ["Geist", "Inter", "sans-serif"],
+            "button":     ["Geist", "Inter", "sans-serif"],
+            "label-caps": ["Geist", "Inter", "sans-serif"],
+            "headline-md":["Geist", "sans-serif"],
+            "headline-lg":["Geist", "sans-serif"],
+            "display-xl": ["Geist", "sans-serif"],
+            "display-xl-mobile":["Geist", "sans-serif"],
+            "label-md":   ["Geist", "sans-serif"],
+          },
+          fontSize: {
+            "body":       ["17px",  { lineHeight:"1.6",  letterSpacing:"0em",    fontWeight:"400" }],
+            "body-md":    ["16px",  { lineHeight:"1.5",  letterSpacing:"0",      fontWeight:"400" }],
+            "body-lg":    ["18px",  { lineHeight:"1.6",  letterSpacing:"-0.01em",fontWeight:"400" }],
+            "h1":         ["84px",  { lineHeight:"0.95", letterSpacing:"-0.04em",fontWeight:"600" }],
+            "h2":         ["48px",  { lineHeight:"1.1",  letterSpacing:"-0.02em",fontWeight:"600" }],
+            "h3":         ["28px",  { lineHeight:"1.2",  letterSpacing:"-0.01em",fontWeight:"500" }],
+            "button":     ["14px",  { lineHeight:"1.0",  letterSpacing:"0.01em", fontWeight:"500" }],
+            "label-caps": ["12px",  { lineHeight:"1.0",  letterSpacing:"0.05em", fontWeight:"600" }],
+            "label-md":   ["14px",  { lineHeight:"20px", letterSpacing:"0.05em", fontWeight:"500" }],
+            "headline-md":["32px",  { lineHeight:"40px", letterSpacing:"-0.01em",fontWeight:"600" }],
+            "headline-lg":["40px",  { lineHeight:"48px", letterSpacing:"-0.02em",fontWeight:"600" }],
+            "display-xl": ["72px",  { lineHeight:"80px", letterSpacing:"-0.04em",fontWeight:"700" }],
+            "display-xl-mobile":["44px",{ lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],
+          },
+          animation: {
+            "marquee": "marquee 40s linear infinite",
+          },
+          keyframes: {
+            "marquee": { "0%": { transform:"translateX(0)" }, "100%": { transform:"translateX(-50%)" } },
+          },
+        }
+      }
+    }
+  </script>
+  <!-- Prevent i18n flash: hide translatable elements before page paints if lang=en -->
+  <script is:inline>
+    (function(){try{var l=localStorage.getItem('vexai_lang');if(l&&l!=='nl')document.documentElement.setAttribute('data-lang-loading','');}catch(e){}})();
+  </script>
+  <style is:inline>
+    html[data-lang-loading] [data-i18n],
+    html[data-lang-loading] [data-i18n-html] { visibility: hidden; }
+  </style>
+  <slot name="head" />
+  <style is:inline>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; margin: 0; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Responsive heading tokens */
+    @media (max-width: 767px) {
+      .text-h1 { font-size: 42px !important; line-height: 1.1 !important; letter-spacing: -0.03em !important; }
+      .text-h2 { font-size: 28px !important; line-height: 1.15 !important; letter-spacing: -0.02em !important; }
+      .text-headline-lg { font-size: 28px !important; line-height: 1.2 !important; }
+      .text-headline-md { font-size: 22px !important; line-height: 1.25 !important; }
+      .text-display-xl { font-size: 44px !important; line-height: 1.1 !important; }
+    }
+    /* Services dropdown */
+    .services-dropdown { pointer-events: none; }
+    .services-group:hover .services-dropdown { pointer-events: auto; }
+    /* Mobile menu transition */
+    #mobileMenu { overflow: hidden; }
+  </style>
+</head>
+<body style={`background-color:${bodyBg};`}>
+
+  <!-- NAVIGATION -->
+  <nav
+    id="mainNav"
+    data-hero={heroPage ? "true" : undefined}
+    class="fixed top-0 w-full z-50 transition-all duration-300"
+    style="background: transparent;"
+  >
+    <div class="max-w-[1280px] mx-auto px-5 md:px-8 flex justify-between items-center h-[68px] md:h-[72px]">
+
+      <!-- Left: Logo + Desktop Links -->
+      <div class="flex items-center gap-6 md:gap-10">
+        <a href="/" class="nav-logo text-[20px] font-bold tracking-tighter flex-shrink-0" style={heroPage ? "color:#ffffff" : "color:#1a1c1c"}>
+          <span style="color:#ff5518">_</span><span class="logo-text">Vexai</span>
+        </a>
+
+        <!-- Desktop nav links -->
+        <div class="hidden md:flex items-center gap-6">
+          <!-- Services dropdown -->
+          <div class="relative services-group">
+            <button
+              class="nav-link text-[14px] font-medium tracking-tight transition-colors duration-200 hover:opacity-70 flex items-center gap-0.5 bg-transparent border-0 cursor-pointer p-0 nav-services-btn"
+              style={heroPage ? "color:#ffffff" : "color:#1a1c1c"}
+            >
+              <span data-i18n="nav.services">Services</span>
+              <span class="material-symbols-outlined text-[18px] transition-transform duration-200 nav-services-arrow" style="line-height:1;margin-top:1px;">expand_more</span>
+            </button>
+            <!-- Dropdown panel -->
+            <div class="services-dropdown absolute top-full left-0 mt-3 bg-white rounded-2xl shadow-xl border border-outline-variant py-2 opacity-0 group-hover:opacity-100 invisible min-w-[160px] z-50 transition-all duration-200"
+              style="transition:opacity 0.15s ease,visibility 0.15s ease;">
+              <a href="/chat-ai/" class="flex items-center px-4 py-2.5 text-[14px] text-on-surface hover:bg-surface-container transition-colors" data-i18n="nav.chat_ai">Chat AI</a>
+              <a href="/telefoon-ai/" class="flex items-center px-4 py-2.5 text-[14px] text-on-surface hover:bg-surface-container transition-colors" data-i18n="nav.phone_ai">Telefoon AI</a>
+            </div>
+          </div>
+          <a href="/prijzen/" class="nav-link text-[14px] font-medium tracking-tight transition-colors duration-200 hover:opacity-70" style={heroPage ? "color:#ffffff" : "color:#1a1c1c"} data-i18n="nav.pricing">Prijzen</a>
+          <a href="/contact/" class="nav-link text-[14px] font-medium tracking-tight transition-colors duration-200 hover:opacity-70" style={heroPage ? "color:#ffffff" : "color:#1a1c1c"} data-i18n="nav.contact">Contact</a>
+        </div>
+      </div>
+
+      <!-- Right: Lang toggle + CTA + Hamburger -->
+      <div class="flex items-center gap-2 md:gap-3">
+        <!-- Language toggle (desktop) -->
+        <button
+          id="langToggle"
+          class="hidden md:flex items-center text-[12px] font-medium opacity-50 hover:opacity-100 transition-opacity"
+          style={heroPage ? "color:#ffffff" : "color:#1a1c1c"}
+          aria-label="Switch language"
+        >
+          <span id="langCurrent">NL</span><span class="mx-1 opacity-40">/</span><span id="langOther">EN</span>
+        </button>
+
+        <!-- CTA button (desktop) -->
+        <a
+          id="navCta"
+          href="/contact/"
+          data-i18n="nav.cta"
+          style={heroPage
+            ? "background:transparent;color:#ffffff;border:1px solid rgba(255,255,255,0.25);transition:all 0.3s ease;"
+            : "background:#000000;color:#ffffff;border:1px solid #000000;transition:all 0.3s ease;"}
+          class="hidden md:flex px-5 py-2.5 rounded-full text-[14px] font-medium whitespace-nowrap items-center"
+        >
+          Plan een adviesgesprek
+        </a>
+
+        <!-- Hamburger (mobile only) -->
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden flex items-center justify-center w-10 h-10 rounded-full transition-colors"
+          aria-label="Menu openen"
+        >
+          <span class="material-symbols-outlined text-[24px] nav-hamburger" id="hamburgerIcon" style={heroPage ? "color:#ffffff" : "color:#1a1c1c"}>menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-outline-variant shadow-lg">
+      <div class="px-5 py-3 flex flex-col">
+        <!-- Services accordion -->
+        <div class="border-b border-outline-variant">
+          <button id="mobileServicesBtn" class="w-full flex items-center justify-between py-3.5 text-[15px] font-medium text-on-surface">
+            <span data-i18n="nav.services">Services</span>
+            <span class="material-symbols-outlined text-[18px] transition-transform duration-200" id="mobileServicesArrow">expand_more</span>
+          </button>
+          <div id="mobileServicesDropdown" class="hidden pb-3 pl-3 flex flex-col gap-1">
+            <a href="/chat-ai/" class="py-2 text-[14px] text-on-surface-variant hover:text-on-surface transition-colors block" data-i18n="nav.chat_ai">Chat AI</a>
+            <a href="/telefoon-ai/" class="py-2 text-[14px] text-on-surface-variant hover:text-on-surface transition-colors block" data-i18n="nav.phone_ai">Telefoon AI</a>
+          </div>
+        </div>
+        <a href="/prijzen/" class="py-3.5 text-[15px] font-medium text-on-surface border-b border-outline-variant" data-i18n="nav.pricing">Prijzen</a>
+        <a href="/contact/" class="py-3.5 text-[15px] font-medium text-on-surface border-b border-outline-variant" data-i18n="nav.contact">Contact</a>
+        <!-- Bottom row -->
+        <div class="pt-4 pb-2 flex items-center justify-between gap-3">
+          <a href="/contact/" class="flex-1 bg-primary text-white py-3 rounded-full text-[14px] font-medium text-center" data-i18n="nav.cta">Plan een adviesgesprek</a>
+          <button id="mobileLangToggle" class="text-[12px] font-semibold text-on-surface-variant hover:text-on-surface transition-colors px-3 py-3 border border-outline-variant rounded-full whitespace-nowrap" aria-label="Wissel taal">
+            <span id="mobileLangLabel">NL / EN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <slot />
+
+  <!-- FOOTER -->
+  <footer class="w-full border-t border-zinc-200 bg-white pt-14 md:pt-20 pb-10 md:pb-12">
+    <div class="max-w-[1280px] mx-auto px-5 md:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-16">
+        <!-- Brand column -->
+        <div class="col-span-2 md:col-span-4 flex flex-col gap-5">
+          <div class="text-[22px] font-bold tracking-tighter text-zinc-900">
+            <span style="color:#ff5518">_</span>Vexai
+          </div>
+          <p class="text-sm text-zinc-500 max-w-xs" data-i18n="footer.tagline">Slimme AI-assistenten die jouw bedrijf laten groeien.</p>
+          <div class="flex flex-col gap-3 mt-1">
+            <label class="text-sm font-semibold text-zinc-900" data-i18n="footer.newsletter">Blijf op de hoogte</label>
+            <form class="flex gap-2">
+              <input type="email" data-i18n-placeholder="footer.email_placeholder" placeholder="E-mailadres" class="flex-grow min-w-0 px-4 py-2 rounded-full border border-zinc-200 bg-white text-sm focus:outline-none focus:border-black transition-colors" />
+              <button type="submit" class="bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-all whitespace-nowrap flex-shrink-0" data-i18n="footer.subscribe">Inschrijven</button>
+            </form>
+          </div>
+        </div>
+        <!-- Product -->
+        <div class="md:col-span-2 md:col-start-6 flex flex-col gap-3">
+          <h4 class="text-xs font-semibold text-zinc-900 uppercase tracking-widest mb-1" data-i18n="footer.col_product">Product</h4>
+          <a href="/chat-ai/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="nav.chat_ai">Chat AI</a>
+          <a href="/telefoon-ai/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="nav.phone_ai">Telefoon AI</a>
+          <a href="/prijzen/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="nav.pricing">Prijzen</a>
+        </div>
+        <!-- Company -->
+        <div class="md:col-span-2 flex flex-col gap-3">
+          <h4 class="text-xs font-semibold text-zinc-900 uppercase tracking-widest mb-1" data-i18n="footer.col_company">Bedrijf</h4>
+          <a href="/over-ons/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="footer.about">Over ons</a>
+          <a href="/blog/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="footer.blog">Blog</a>
+          <a href="/vacatures/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="footer.jobs">Vacatures</a>
+          <a href="/contact/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="nav.contact">Contact</a>
+        </div>
+        <!-- Legal -->
+        <div class="md:col-span-2 flex flex-col gap-3">
+          <h4 class="text-xs font-semibold text-zinc-900 uppercase tracking-widest mb-1" data-i18n="footer.col_legal">Juridisch</h4>
+          <a href="/privacy/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="footer.privacy">Privacy</a>
+          <a href="/voorwaarden/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="footer.terms">Voorwaarden</a>
+          <a href="/beveiliging/" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors" data-i18n="footer.security">Beveiliging</a>
+        </div>
+      </div>
+      <div class="pt-6 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <span class="text-xs text-zinc-400" data-i18n="footer.copyright">© 2025-2026 _Vexai. Alle rechten voorbehouden.</span>
+        <div class="flex gap-5 text-zinc-400">
+          <a href="#" class="hover:text-zinc-900 transition-colors"><span class="material-symbols-outlined text-[20px]">language</span></a>
+          <a href="#" class="hover:text-zinc-900 transition-colors"><span class="material-symbols-outlined text-[20px]">chat</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS: I18N + MOBILE MENU + NAV SCROLL -->
+  <script is:inline>
+  (function() {
+
+    /* ===== I18N TRANSLATIONS ===== */
+    var T = {
+      nl: {
+        'nav.services': 'Services',
+        'nav.chat_ai': 'Chat AI',
+        'nav.phone_ai': 'Telefoon AI',
+        'nav.pricing': 'Prijzen',
+        'nav.contact': 'Contact',
+        'nav.cta': 'Plan een adviesgesprek',
+        'footer.tagline': 'Slimme AI-assistenten die jouw bedrijf laten groeien.',
+        'footer.newsletter': 'Blijf op de hoogte',
+        'footer.email_placeholder': 'E-mailadres',
+        'footer.subscribe': 'Inschrijven',
+        'footer.col_product': 'Product',
+        'footer.col_company': 'Bedrijf',
+        'footer.col_legal': 'Juridisch',
+        'footer.about': 'Over ons',
+        'footer.blog': 'Blog',
+        'footer.jobs': 'Vacatures',
+        'footer.privacy': 'Privacy',
+        'footer.terms': 'Voorwaarden',
+        'footer.security': 'Beveiliging',
+        'footer.copyright': '© 2025-2026 _Vexai. Alle rechten voorbehouden.',
+        'home.hero_h1': 'Altijd bereikbaar.<br />Nooit offline.',
+        'home.trust': 'Vertrouwd door 100+ bedrijven',
+        'home.intro_h2': 'Technologie die met je meebeweegt',
+        'home.intro_p': 'Goede communicatie vraagt om aandacht. Door repeterende vragen zorgvuldig op te vangen, zorgen onze AI-assistenten voor een altijd bereikbare basis. Zo blijft de klantervaring hoogwaardig, terwijl jij de controle behoudt.',
+        'home.products_h2': 'Kies uw oplossing',
+        'home.products_p': 'Beide oplossingen werken naadloos samen. Kies waar u wilt beginnen',
+        'home.chat_desc': 'Automatiseer uw klantcontact via WhatsApp met intelligente AI-chatbots die uw klanten direct helpen.',
+        'home.chat_link': 'Ontdek Chat AI',
+        'home.phone_desc': 'Verbeter uw telefonische bereikbaarheid met menselijke AI-stemmen die gesprekken vloeiend afhandelen.',
+        'home.phone_link': 'Ontdek Telefoon AI',
+        'chat.h1': 'Altijd binnen handbereik, op elk kanaal',
+        'chat.hero_p': 'Verbind moeiteloos met klanten via WhatsApp, Instagram en op de website zelf. Een intelligente Chat Agent die vragen direct beantwoordt en trajecten vormgeeft, zodat een simpel bericht altijd kan leiden tot een nieuwe afspraak in de agenda.',
+        'chat.s2_h2': 'De Keuze van Tegenwoordig',
+        'chat.s2_p': 'Of de klant nu via WhatsApp klaarstaan met een vraag, reageren op Instagram of door een widget op de website gaan; de ervaring is identiek: direct, persoonlijk en perfect inpasbaar binnen de merkidentiteit. Geen frustrerende wachttijden, maar onmiddellijke interactie die altijd precies goed landt.',
+        'chat.card1_h': 'De Support Assistent',
+        'chat.card1_p': 'Specifiek ontworpen om de dagelijkse operaties te vereenvoudigen. Van het checken van orders tot het beantwoorden van veelgestelde vragen over prijzen en locaties. Een stille kracht die zorgt voor directe rust in al je processen.',
+        'chat.card2_h': 'De Groei Assistent',
+        'chat.card2_p': 'Dit is de proactieve helper. Het kwalificeert leads, duikt dieper in de behoeften van de klant en stuurt hen direct naar het juiste punt in het proces. Het is de eerste stap naar een hogere conversie.',
+        'chat.studio_h2': 'Naadloze Integraties',
+        'chat.studio_p': 'Onze intelligente assistenten integreren naadloos met de platformen die je al dagelijks gebruikt. Van WhatsApp tot Instagram DM: jouw business is vanaf nu 24/7 bereikbaar, responsief en klaar om te converteren.',
+        'chat.agents_h2': 'Lanceer Jouw AI-Assistent',
+        'chat.agents_p': "Klanten willen geen 'formulier' invullen; ze willen praten. Onze Chat Agents zorgen ervoor dat een simpel bericht van een klant direct wordt omgezet in een volledige afspraak in de agenda.",
+        'chat.stats_h': 'Responstijd',
+        'chat.stats_p': 'Altijd een vloeiend antwoord binnen 5 seconden',
+        'chat.final_h2': 'Klaar om aan de toekomst te bouwen?',
+        'chat.final_btn': 'Begin nu met _Vexai',
+        'tel.h1': 'Een stem die er altijd is en altijd luistert',
+        'tel.hero_p': 'Zorg dat klanten nooit meer in een wachtrij belanden en er geen oproep meer gemist wordt. Ontdek de kracht van intelligente stemtechnologie waarbij de focus ligt op verbinden, niet alleen op reageren.',
+        'tel.marquee_label': 'Integreert naadloos met jouw CRM- en DMS-systemen',
+        'tel.platform_h2': 'Twee systemen, één centrale intelligentie',
+        'tel.platform_p': 'Of het nu gaat om inkomende vragen of proactieve opvolging; beide krachten putten uit exact dezelfde basis. De AI begrijpt je bedrijf door en door, communiceert met je CRM en zorgt voor een consistente, hoogwaardige ervaring in elk gesprek.',
+        'tel.inbound_h': 'Inbound',
+        'tel.inbound_p': 'Elk inkomend gesprek direct en professioneel opgevangen. De AI begrijpt de intentie van de klant, biedt de juiste service en zorgt voor een vloeiende overgang naar je team waar nodig is.',
+        'tel.outbound_h': 'Outbound',
+        'tel.outbound_p': 'Proactief contact met je leads zonder zelf te hoeven bellen. Het systeem belt binnen 5 minuten na een aanvraag of reactiveert oude lijsten, zodat er nooit meer een waardevolle kans blijft liggen.',
+        'tel.studio_h2': 'Slimme functies die je workflow versterken',
+        'tel.studio_p': 'Achter elke succesvolle oproep staat een netwerk van geavanceerde technologische functies',
+        'tel.agenda_h': 'Directe agenda-koppeling',
+        'tel.agenda_p': 'Zodra de AI een positieve reactie ontvangt, wordt er direct een afspraak ingeschoten. Het systeem kijkt realtime in je agenda, stelt beschikbare tijden voor en legt de datum vast zonder dat er een medewerker aan te pas komt.',
+        'tel.reports_h': 'Automatische verslagen',
+        'tel.reports_p': 'Elk gesprek wordt realtime omgezet in tekst en samengevat door de AI. Belangrijke data, klantbehoeften en gemaakte afspraken worden direct gefilterd, zodat je team direct over de juiste context beschikt.',
+        'tel.final_h2': 'De nieuwe standaard voor menselijk klantcontact',
+        'tel.final_btn': 'Begin nu met _Vexai',
+        'pri.badge': '_Vexai v2.0 is nu live',
+        'pri.h1': 'Automatiseer je klantenservice met slimme AI',
+        'pri.hero_p': 'Mis nooit meer een kans. Laat onze Chat AI en Telefoon AI 24/7 je chats beantwoorden en telefoontjes afhandelen alsof het een echte medewerker is',
+        'pri.cta1': 'Plan een adviesgesprek',
+        'pri.cta2': 'Bekijk de prijzen',
+        'pri.overview_h2': 'Kies de AI-oplossing die bij je past',
+        'pri.overview_p': 'Transformeer hoe je communiceert met je klanten door gebruik te maken van onze geavanceerde taalmodellen',
+        'pri.pricing_h2': 'Eenvoudige, transparante prijzen',
+        'pri.pricing_p': 'Kies het plan dat het beste aansluit bij de groei van jouw onderneming',
+        'pri.trust_h2': 'Betrouwbaar, veilig en klaar voor groei',
+        'pri.trust_p': 'Wij zorgen voor een waterdichte installatie van jouw AI-assistenten. Jouw bedrijfsdata en klantgegevens zijn bij ons in veilige handen.',
+        'con.h1': 'Laten we kennismaken',
+        'con.hero_p': 'Boek een gratis gesprek van 30 minuten om te ontdekken hoe AI jouw klantcontact kan transformeren. We focussen op waarde, niet op de handtekening',
+        'con.why_h2': 'Wat bespreken we in 30 minuten?',
+        'con.phil_h2': 'Waarom we niet aan harde verkoop doen',
+        'con.phil_p1': 'Bij Vexai geloven we in engineering, niet in manipulatie. We bouwen complexe systemen die alleen werken als er een perfecte match is tussen de technologie en de behoefte.',
+        'con.phil_p2': 'Onze adviseurs zijn engineers en product strategen, geen accountmanagers met targets. Als we denken dat AI (nog) niet de juiste oplossing voor je is, zeggen we dat eerlijk.',
+        'con.cal_p': 'Selecteer hieronder een moment dat jou uitkomt. Het gesprek vindt plaats via Google Meet.',
+      },
+      en: {
+        'nav.services': 'Services',
+        'nav.chat_ai': 'Chat AI',
+        'nav.phone_ai': 'Phone AI',
+        'nav.pricing': 'Pricing',
+        'nav.contact': 'Contact',
+        'nav.cta': 'Schedule a consultation',
+        'footer.tagline': 'Smart AI assistants that grow your business.',
+        'footer.newsletter': 'Stay informed',
+        'footer.email_placeholder': 'Email address',
+        'footer.subscribe': 'Subscribe',
+        'footer.col_product': 'Product',
+        'footer.col_company': 'Company',
+        'footer.col_legal': 'Legal',
+        'footer.about': 'About us',
+        'footer.blog': 'Blog',
+        'footer.jobs': 'Careers',
+        'footer.privacy': 'Privacy',
+        'footer.terms': 'Terms',
+        'footer.security': 'Security',
+        'footer.copyright': '© 2025-2026 _Vexai. All rights reserved.',
+        'home.hero_h1': 'Always available.<br />Never offline.',
+        'home.trust': 'Trusted by 100+ companies',
+        'home.intro_h2': 'Technology that moves with you',
+        'home.intro_p': 'Good communication requires attention. By carefully handling repetitive questions, our AI assistants provide an always-available foundation. This keeps the customer experience premium while you stay in control.',
+        'home.products_h2': 'Choose your solution',
+        'home.products_p': 'Both solutions work seamlessly together. Choose where you want to start',
+        'home.chat_desc': 'Automate your customer contact via WhatsApp with intelligent AI chatbots that help your customers instantly.',
+        'home.chat_link': 'Discover Chat AI',
+        'home.phone_desc': 'Improve your phone availability with human-like AI voices that handle conversations smoothly.',
+        'home.phone_link': 'Discover Phone AI',
+        'chat.h1': 'Always within reach, on every channel',
+        'chat.hero_p': 'Connect effortlessly with customers via WhatsApp, Instagram and your own website. An intelligent Chat Agent that answers questions instantly and shapes journeys, so a simple message can always lead to a new appointment in the calendar.',
+        'chat.s2_h2': 'The Modern Choice',
+        'chat.s2_p': 'Whether customers reach out via WhatsApp, reply on Instagram or use a widget on the website; the experience is identical: direct, personal and perfectly aligned with the brand identity. No frustrating wait times, but immediate interaction that always lands just right.',
+        'chat.card1_h': 'The Support Assistant',
+        'chat.card1_p': 'Specifically designed to simplify daily operations. From checking orders to answering frequently asked questions about prices and locations. A silent force that brings immediate peace to all your processes.',
+        'chat.card2_h': 'The Growth Assistant',
+        'chat.card2_p': "This is the proactive helper. It qualifies leads, dives deeper into customer needs and sends them directly to the right point in the process. It's the first step toward higher conversion.",
+        'chat.studio_h2': 'Seamless Integrations',
+        'chat.studio_p': 'Our intelligent assistants integrate seamlessly with the platforms you already use daily. From WhatsApp to Instagram DM: your business is now available 24/7, responsive and ready to convert.',
+        'chat.agents_h2': 'Launch Your AI Assistant',
+        'chat.agents_p': "Customers don't want to fill in a 'form'; they want to talk. Our Chat Agents ensure that a simple message from a customer is immediately converted into a full appointment in the calendar.",
+        'chat.stats_h': 'Response time',
+        'chat.stats_p': 'Always a smooth answer within 5 seconds',
+        'chat.final_h2': 'Ready to build for the future?',
+        'chat.final_btn': 'Start now with _Vexai',
+        'tel.h1': 'A voice that is always there and always listens',
+        'tel.hero_p': 'Ensure customers never end up in a queue and no call is ever missed. Discover the power of intelligent voice technology focused on connecting, not just responding.',
+        'tel.marquee_label': 'Integrates seamlessly with your CRM and DMS systems',
+        'tel.platform_h2': 'Two systems, one central intelligence',
+        'tel.platform_p': "Whether it involves incoming questions or proactive follow-up; both forces draw from exactly the same foundation. The AI knows your business inside out, communicates with your CRM and ensures a consistent, high-quality experience in every conversation.",
+        'tel.inbound_h': 'Inbound',
+        'tel.inbound_p': "Every incoming call handled directly and professionally. The AI understands the customer's intent, provides the right service and ensures a smooth transition to your team where needed.",
+        'tel.outbound_h': 'Outbound',
+        'tel.outbound_p': "Proactive contact with your leads without having to call yourself. The system calls within 5 minutes of a request or reactivates old lists, so no valuable opportunity ever gets missed.",
+        'tel.studio_h2': 'Smart features that enhance your workflow',
+        'tel.studio_p': 'Behind every successful call is a network of advanced technological features',
+        'tel.agenda_h': 'Direct calendar integration',
+        'tel.agenda_p': 'As soon as the AI receives a positive response, an appointment is immediately scheduled. The system checks your calendar in real-time, suggests available times and confirms the date without any staff involvement.',
+        'tel.reports_h': 'Automatic summaries',
+        'tel.reports_p': 'Every conversation is converted to text in real-time and summarized by the AI. Important data, customer needs and agreed appointments are immediately filtered, so your team has the right context instantly.',
+        'tel.final_h2': 'The new standard for human customer contact',
+        'tel.final_btn': 'Start now with _Vexai',
+        'pri.badge': '_Vexai v2.0 is now live',
+        'pri.h1': 'Automate your customer service with smart AI',
+        'pri.hero_p': 'Never miss an opportunity again. Let our Chat AI and Phone AI answer your chats and handle calls 24/7 as if it were a real employee',
+        'pri.cta1': 'Schedule a consultation',
+        'pri.cta2': 'View pricing',
+        'pri.overview_h2': 'Choose the AI solution that fits you',
+        'pri.overview_p': 'Transform how you communicate with your customers using our advanced language models',
+        'pri.pricing_h2': 'Simple, transparent pricing',
+        'pri.pricing_p': 'Choose the plan that best fits the growth of your business',
+        'pri.trust_h2': 'Reliable, secure and ready to grow',
+        'pri.trust_p': 'We ensure a watertight installation of your AI assistants. Your business data and customer information are in safe hands with us.',
+        'con.h1': "Let's get acquainted",
+        'con.hero_p': 'Book a free 30-minute call to discover how AI can transform your customer contact. We focus on value, not on the signature',
+        'con.why_h2': 'What do we discuss in 30 minutes?',
+        'con.phil_h2': "Why we don't do hard selling",
+        'con.phil_p1': "At Vexai, we believe in engineering, not manipulation. We build complex systems that only work when there's a perfect match between the technology and the need.",
+        'con.phil_p2': "Our advisors are engineers and product strategists, not account managers with targets. If we think AI is not (yet) the right solution for you, we'll say so honestly.",
+        'con.cal_p': 'Select a time below that works for you. The meeting takes place via Google Meet.',
+      }
+    };
+
+    var lang = (typeof localStorage !== 'undefined' && localStorage.getItem('vexai_lang')) || 'nl';
+
+    function applyLang(l) {
+      lang = l;
+      if (typeof localStorage !== 'undefined') localStorage.setItem('vexai_lang', l);
+      var t = T[l];
+      if (!t) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      var lc = document.getElementById('langCurrent');
+      var lo = document.getElementById('langOther');
+      var ml = document.getElementById('mobileLangLabel');
+      if (lc) lc.textContent = l.toUpperCase();
+      if (lo) lo.textContent = l === 'nl' ? 'EN' : 'NL';
+      if (ml) ml.textContent = l === 'nl' ? 'NL / EN' : 'EN / NL';
+      document.documentElement.lang = l;
+      document.documentElement.removeAttribute('data-lang-loading');
+    }
+
+    // Apply non-default language on load
+    if (lang !== 'nl') applyLang(lang);
+
+    function toggleLang() { applyLang(lang === 'nl' ? 'en' : 'nl'); }
+    var lb = document.getElementById('langToggle');
+    var mlb = document.getElementById('mobileLangToggle');
+    if (lb) lb.addEventListener('click', toggleLang);
+    if (mlb) mlb.addEventListener('click', toggleLang);
+
+    /* ===== SERVICES DROPDOWN (hover + click) ===== */
+    var servicesGroup = document.querySelector('.services-group');
+    var servicesDropdown = servicesGroup ? servicesGroup.querySelector('.services-dropdown') : null;
+
+    if (servicesGroup && servicesDropdown) {
+      servicesGroup.addEventListener('mouseenter', function() {
+        servicesDropdown.style.opacity = '1';
+        servicesDropdown.style.visibility = 'visible';
+      });
+      servicesGroup.addEventListener('mouseleave', function() {
+        servicesDropdown.style.opacity = '0';
+        servicesDropdown.style.visibility = 'hidden';
+      });
+      // Also support click toggle for accessibility
+      var servicesBtn = servicesGroup.querySelector('.nav-services-btn');
+      if (servicesBtn) {
+        servicesBtn.addEventListener('click', function(e) {
+          var isVisible = servicesDropdown.style.visibility === 'visible';
+          servicesDropdown.style.opacity = isVisible ? '0' : '1';
+          servicesDropdown.style.visibility = isVisible ? 'hidden' : 'visible';
+        });
+      }
+      // Close on outside click
+      document.addEventListener('click', function(e) {
+        if (!servicesGroup.contains(e.target)) {
+          servicesDropdown.style.opacity = '0';
+          servicesDropdown.style.visibility = 'hidden';
+        }
+      });
+    }
+
+    /* ===== MOBILE MENU ===== */
+    var menuBtn = document.getElementById('mobileMenuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var hamburgerIcon = document.getElementById('hamburgerIcon');
+    var mobileServicesBtn = document.getElementById('mobileServicesBtn');
+    var mobileServicesDropdown = document.getElementById('mobileServicesDropdown');
+    var mobileServicesArrow = document.getElementById('mobileServicesArrow');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', function() {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          if (hamburgerIcon) hamburgerIcon.textContent = 'menu';
+        } else {
+          mobileMenu.classList.remove('hidden');
+          if (hamburgerIcon) hamburgerIcon.textContent = 'close';
+        }
+      });
+    }
+
+    if (mobileServicesBtn && mobileServicesDropdown) {
+      mobileServicesBtn.addEventListener('click', function() {
+        var isOpen = !mobileServicesDropdown.classList.contains('hidden');
+        if (isOpen) {
+          mobileServicesDropdown.classList.add('hidden');
+          if (mobileServicesArrow) mobileServicesArrow.style.transform = '';
+        } else {
+          mobileServicesDropdown.classList.remove('hidden');
+          if (mobileServicesArrow) mobileServicesArrow.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+
+    /* ===== NAV SCROLL BEHAVIOR ===== */
+    var nav = document.getElementById('mainNav');
+    if (!nav) return;
+    var heroMode = nav.dataset.hero === 'true';
+    var navLinks = nav.querySelectorAll('.nav-link');
+    var logo = nav.querySelector('.logo-text');
+    var cta = document.getElementById('navCta');
+    var hIcon = document.getElementById('hamburgerIcon');
+    var lt = document.getElementById('langToggle');
+
+    if (!heroMode) {
+      nav.style.background = 'rgba(255,255,255,0.88)';
+      nav.style.backdropFilter = 'blur(16px)';
+      nav.style.borderBottom = '1px solid rgba(0,0,0,0.08)';
+      return;
+    }
+
+    function updateNav() {
+      var scrolled = window.scrollY > window.innerHeight * 0.75;
+      if (scrolled) {
+        nav.style.background = 'rgba(255,255,255,0.88)';
+        nav.style.backdropFilter = 'blur(16px)';
+        nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.08)';
+        navLinks.forEach(function(l) { l.style.color = '#1a1c1c'; });
+        if (logo) logo.style.color = '#1a1c1c';
+        if (cta) { cta.style.background = '#000000'; cta.style.color = '#ffffff'; cta.style.borderColor = '#000000'; }
+        if (hIcon) hIcon.style.color = '#1a1c1c';
+        if (lt) lt.style.color = '#1a1c1c';
+      } else {
+        nav.style.background = 'transparent';
+        nav.style.backdropFilter = 'none';
+        nav.style.boxShadow = 'none';
+        navLinks.forEach(function(l) { l.style.color = '#ffffff'; });
+        if (logo) logo.style.color = '#ffffff';
+        if (cta) { cta.style.background = 'transparent'; cta.style.color = '#ffffff'; cta.style.borderColor = 'rgba(255,255,255,0.25)'; }
+        if (hIcon) hIcon.style.color = '#ffffff';
+        if (lt) lt.style.color = '#ffffff';
+      }
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+  })();
+  </script>
+</body>
+</html>

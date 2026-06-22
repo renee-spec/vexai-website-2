@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Plan een Gratis Adviesgesprek | Vexai"
+  description="Boek een gratis 30-minuten gesprek met Vexai. We analyseren jouw situatie en laten zien hoe AI jouw klantcontact kan transformeren. Geen verplichtingen."
+  bodyBg="#ffffff"
+>
+
+  <style is:inline>
+    body { background-color: #FFFFFF; color: #1a1a1a; font-family: 'Geist', sans-serif; overflow-x: hidden; }
+    .rail-anchor { position: fixed; left: 80px; top: 0; bottom: 0; width: 0.5px; background: rgba(0,0,0,0.08); z-index: 10; }
+    @media (max-width: 1024px) { .rail-anchor { display: none; } }
+    .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(255,87,28,0.05) 0%, transparent 70%); }
+    .booking-frame { min-height: 700px; border-radius: 0.5rem; background: #fdfdfd; border: 0.5px solid rgba(0,0,0,0.08); }
+  </style>
+
+  <div class="rail-anchor"></div>
+
+  <main class="pt-28 md:pt-40 pb-16 md:pb-20 relative overflow-hidden font-body-md text-body-md">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1000px] hero-gradient pointer-events-none"></div>
+
+    <!-- HERO HEADER -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-[24px] relative z-10 mb-[48px] md:mb-[64px]">
+      <div class="max-w-3xl ml-0 md:ml-[80px]">
+        <h1 class="font-display-xl text-display-xl-mobile md:text-display-xl text-on-surface mb-5 md:mb-6 leading-tight" data-i18n="con.h1">
+          Laten we kennismaken
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl" data-i18n="con.hero_p">
+          Boek een gratis gesprek van 30 minuten om te ontdekken hoe AI jouw klantcontact kan transformeren. We focussen op waarde, niet op de handtekening
+        </p>
+      </div>
+    </section>
+
+    <!-- FEATURE GRID -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-[24px] mb-[48px] md:mb-[64px]">
+      <div class="ml-0 md:ml-[80px]">
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-8 md:mb-12" data-i18n="con.why_h2">Wat bespreken we in 30 minuten?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div class="bg-white border border-[rgba(0,0,0,0.08)] p-6 md:p-8 rounded-[20px] md:rounded-[24px] group transition-colors duration-500">
+            <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-surface-container flex items-center justify-center mb-5 md:mb-6 border border-[rgba(0,0,0,0.08)] text-on-surface">
+              <span class="material-symbols-outlined text-[20px] md:text-[24px]">analytics</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] md:text-[20px] text-on-surface mb-3">Jouw huidige situatie</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant text-sm">We analyseren de huidige knelpunten in je klantenservice proces.</p>
+          </div>
+          <div class="bg-white border border-[rgba(0,0,0,0.08)] p-6 md:p-8 rounded-[20px] md:rounded-[24px] group transition-colors duration-500">
+            <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-surface-container flex items-center justify-center mb-5 md:mb-6 border border-[rgba(0,0,0,0.08)] text-on-surface">
+              <span class="material-symbols-outlined text-[20px] md:text-[24px]">smart_toy</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] md:text-[20px] text-on-surface mb-3">Kaders van de AI-bot</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant text-sm">Samen definiëren we de grenzen en mogelijkheden voor jouw AI-oplossing.</p>
+          </div>
+          <div class="bg-white border border-[rgba(0,0,0,0.08)] p-6 md:p-8 rounded-[20px] md:rounded-[24px] group transition-colors duration-500">
+            <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-surface-container flex items-center justify-center mb-5 md:mb-6 border border-[rgba(0,0,0,0.08)] text-on-surface">
+              <span class="material-symbols-outlined text-[20px] md:text-[24px]">terminal</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] md:text-[20px] text-on-surface mb-3">Technische vragen beantwoord</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant text-sm">Directe antwoorden op integraties, security en schaalbaarheid.</p>
+          </div>
+          <div class="bg-white border border-[rgba(0,0,0,0.08)] p-6 md:p-8 rounded-[20px] md:rounded-[24px] group transition-colors duration-500">
+            <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-surface-container flex items-center justify-center mb-5 md:mb-6 border border-[rgba(0,0,0,0.08)] text-on-surface">
+              <span class="material-symbols-outlined text-[20px] md:text-[24px]">add_task</span>
+            </div>
+            <h3 class="font-headline-md text-[18px] md:text-[20px] text-on-surface mb-3">Vrijblijvend aanvullen</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant text-sm">Een op maat gemaakt actieplan zonder enige verplichtingen achteraf.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING & PHILOSOPHY -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-[24px] mb-[48px] md:mb-[64px]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-[32px]">
+        <!-- Philosophy Sidebar -->
+        <div class="lg:col-span-4 ml-0 md:ml-[80px]">
+          <div class="lg:sticky lg:top-32">
+            <h2 class="font-headline-md text-headline-md text-on-surface mb-6" data-i18n="con.phil_h2">Waarom we niet aan harde verkoop doen</h2>
+            <div class="space-y-5 md:space-y-6">
+              <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="con.phil_p1">
+                Bij Vexai geloven we in engineering, niet in manipulatie. We bouwen complexe systemen die alleen werken als er een perfecte match is tussen de technologie en de behoefte.
+              </p>
+              <p class="font-body-md text-body-md text-on-surface-variant" data-i18n="con.phil_p2">
+                Onze adviseurs zijn engineers en product strategen, geen accountmanagers met targets. Als we denken dat AI (nog) niet de juiste oplossing voor je is, zeggen we dat eerlijk.
+              </p>
+              <div class="pt-6 md:pt-8 border-t border-[rgba(0,0,0,0.08)]">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden flex-shrink-0">
+                    <img
+                      src="/Website foto Renee Founder Vexai AI receptionist.png"
+                      alt="Renee de Ruijter — Founder & CEO"
+                      style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:0.85;transition:filter 0.4s ease,opacity 0.4s ease;cursor:default;"
+                      onmouseover="this.style.filter='grayscale(0)';this.style.opacity='1';"
+                      onmouseout="this.style.filter='grayscale(1)';this.style.opacity='0.85';"
+                    />
+                  </div>
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">Renee de Ruijter</p>
+                    <p class="text-[12px] text-on-surface-variant">Founder &amp; CEO</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Calendar -->
+        <div class="lg:col-span-8">
+          <div class="booking-frame w-full flex flex-col items-center justify-center p-6 md:p-12 text-center relative overflow-hidden">
+            <div class="relative z-10 w-full max-w-xl">
+              <p class="font-body-md text-on-surface-variant mb-6 md:mb-8" data-i18n="con.cal_p">Selecteer hieronder een moment dat jou uitkomt. Het gesprek vindt plaats via Google Meet.</p>
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/5MK0rSyhe5aOwlFjEgnc"
+                style="width:100%;border:none;overflow:hidden;min-height:700px;"
+                scrolling="no"
+                id="5MK0rSyhe5aOwlFjEgnc_1782082224898"
+              ></iframe>
+              <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript" is:inline></script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</Layout>

@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Vexai | Intelligente AI-Receptionist voor Bedrijven"
+  description="Vexai bouwt slimme AI-assistenten die jouw klantcontact overnemen via chat, WhatsApp en telefoon. Altijd bereikbaar. Nooit offline. Probeer gratis."
+  heroPage={true}
+  bodyBg="#f9f9f9"
+>
+
+  <!-- HERO VIDEO SECTION -->
+  <section style="position:relative;width:100%;height:100vh;overflow:hidden;background:#000;">
+    <video
+      id="heroVideo"
+      autoplay
+      loop
+      muted
+      playsinline
+      style="position:absolute;top:50%;left:50%;width:115%;height:115%;transform:translate(-50%,-50%);object-fit:cover;opacity:0;"
+    >
+      <source src="https://pub-6d418d1898fb4219bf2227841c588d5e.r2.dev/jCfego.mp4" type="video/mp4" />
+    </video>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.15) 50%,rgba(0,0,0,0.55) 100%);pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 1.5rem;pointer-events:none;">
+      <h1
+        data-i18n-html="home.hero_h1"
+        style="font-family:'Fustat',sans-serif;font-weight:700;font-size:clamp(40px,7vw,80px);line-height:1.05;letter-spacing:-0.03em;color:#ffffff;text-shadow:0 2px 24px rgba(0,0,0,0.3);"
+      >
+        Altijd bereikbaar.<br />Nooit offline.
+      </h1>
+    </div>
+  </section>
+
+  <!-- VIDEO FADE JS -->
+  <script is:inline>
+    (function() {
+      var video = document.getElementById('heroVideo');
+      if (!video) return;
+      var fadingOut = false;
+
+      function rAFFade(el, from, to, ms, cb) {
+        var startTime = performance.now();
+        function step(now) {
+          var p = Math.min((now - startTime) / ms, 1);
+          el.style.opacity = (from + (to - from) * p).toString();
+          if (p < 1) requestAnimationFrame(step);
+          else if (cb) cb();
+        }
+        requestAnimationFrame(step);
+      }
+
+      video.addEventListener('canplay', function onCanPlay() {
+        video.removeEventListener('canplay', onCanPlay);
+        rAFFade(video, 0, 1, 250);
+      });
+
+      video.addEventListener('timeupdate', function() {
+        if (!video.duration) return;
+        var remaining = video.duration - video.currentTime;
+        if (!fadingOut && remaining > 0 && remaining <= 0.55) {
+          fadingOut = true;
+          rAFFade(video, 1, 0, 250);
+        }
+        if (fadingOut && video.currentTime < 0.15) {
+          fadingOut = false;
+          rAFFade(video, 0, 1, 250);
+        }
+      });
+    })();
+  </script>
+
+  <!-- MAIN CONTENT -->
+  <main class="bg-surface font-body text-body text-on-surface">
+
+    <!-- TRUST STRIP -->
+    <section class="max-w-[1280px] mx-auto px-5 md:px-6 py-[60px] md:py-[80px] border-y border-surface-variant">
+      <div class="flex flex-col items-center">
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
+          <p class="text-center text-sm font-medium text-outline uppercase tracking-widest" data-i18n="home.trust">Vertrouwd door 100+ bedrijven</p>
+          <div class="flex text-primary text-xs">★★★★★</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO SECTION -->
+    <section class="w-full bg-surface py-[60px] md:py-[80px]">
+      <div class="max-w-[1280px] mx-auto px-5 md:px-6">
+        <div class="max-w-[800px] text-center mx-auto">
+          <h2 class="font-h2 text-h2 text-on-surface mb-6 tracking-tighter" data-i18n="home.intro_h2">Technologie die met je meebeweegt</h2>
+          <p class="font-body text-body text-on-surface-variant leading-relaxed" data-i18n="home.intro_p">
+            Goede communicatie vraagt om aandacht. Door repeterende vragen zorgvuldig op te vangen, zorgen onze AI-assistenten voor een altijd bereikbare basis. Zo blijft de klantervaring hoogwaardig, terwijl jij de controle behoudt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-[1280px] mx-auto px-5 md:px-6"><div class="border-t border-surface-variant"></div></div>
+
+    <!-- PRODUCT GRID -->
+    <section class="max-w-[1280px] mx-auto px-5 md:px-6 pb-[80px] md:pb-[120px] pt-12">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="font-h2 text-h2 text-on-surface mb-4" data-i18n="home.products_h2">Kies uw oplossing</h2>
+        <p class="font-body text-body text-on-surface-variant max-w-[600px] mx-auto" data-i18n="home.products_p">Beide oplossingen werken naadloos samen. Kies waar u wilt beginnen</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-[900px] mx-auto">
+        <!-- Card Chat AI -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-[24px] p-6 hover:shadow-sm transition-shadow duration-300 group flex flex-col h-full">
+          <div class="mb-6 bg-surface-container h-36 md:h-40 rounded-xl overflow-hidden flex items-center justify-center">
+            <span class="material-symbols-outlined text-4xl text-outline group-hover:text-primary transition-colors">chat</span>
+          </div>
+          <h3 class="font-h3 text-h3 text-on-surface mb-2 text-xl">Chat AI</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed mb-4 flex-grow" data-i18n="home.chat_desc">Automatiseer uw klantcontact via WhatsApp met intelligente AI-chatbots die uw klanten direct helpen.</p>
+          <a class="text-sm font-medium text-primary hover:underline inline-flex items-center" href="/chat-ai/">
+            <span data-i18n="home.chat_link">Ontdek Chat AI</span> <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+          </a>
+        </div>
+        <!-- Card Telefoon AI -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-[24px] p-6 hover:shadow-sm transition-shadow duration-300 group flex flex-col h-full">
+          <div class="mb-6 bg-surface-container h-36 md:h-40 rounded-xl overflow-hidden flex items-center justify-center">
+            <span class="material-symbols-outlined text-4xl text-outline group-hover:text-primary transition-colors">call</span>
+          </div>
+          <h3 class="font-h3 text-h3 text-on-surface mb-2 text-xl">Telefoon AI</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed mb-4 flex-grow" data-i18n="home.phone_desc">Verbeter uw telefonische bereikbaarheid met menselijke AI-stemmen die gesprekken vloeiend afhandelen.</p>
+          <a class="text-sm font-medium text-primary hover:underline inline-flex items-center" href="/telefoon-ai/">
+            <span data-i18n="home.phone_link">Ontdek Telefoon AI</span> <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>

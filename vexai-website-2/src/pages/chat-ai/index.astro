@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Chat AI | 24/7 Klantenservice via WhatsApp & Website | Vexai"
+  description="Vexai's Chat AI beantwoordt klantvragen direct via WhatsApp, Instagram en je website. Automatisch afspraken inplannen, leads kwalificeren en altijd online."
+  bodyBg="#ffffff"
+>
+
+  <style is:inline>
+    body { background-color: #FFFFFF; color: #111111; font-family: 'Inter', sans-serif; }
+    .text-secondary-auralis { color: #666666; }
+    .bg-panel-auralis { background-color: #F6F6F6; }
+    .bg-card-auralis { background-color: #FFFFFF; }
+    .border-auralis { border-color: #EBEBEB; }
+    .chat-h1 { font-size: 64px; line-height: 1.05; letter-spacing: -0.04em; font-weight: 500; }
+    .chat-h2 { font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; font-weight: 500; }
+    .chat-h3 { font-size: 32px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
+    @media (max-width: 767px) {
+      .chat-h1 { font-size: 38px; }
+      .chat-h2 { font-size: 26px; }
+      .chat-h3 { font-size: 22px; }
+    }
+  </style>
+
+  <main class="flex-grow pt-[100px] md:pt-[160px] pb-[80px] md:pb-[120px] antialiased overflow-x-hidden font-body-md text-body-md">
+
+    <!-- HERO SECTION -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-10 mb-[80px] md:mb-[140px]">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-10 items-start md:items-center justify-between">
+        <div class="w-full md:w-[55%] max-w-[520px] flex flex-col gap-6 md:gap-8">
+          <h1 class="chat-h1 text-primary" style="font-family:'Inter',sans-serif;" data-i18n="chat.h1">Altijd binnen handbereik, op elk kanaal</h1>
+          <div class="flex flex-wrap items-center gap-3 md:gap-4">
+            <a class="bg-primary text-white px-6 h-[44px] flex items-center justify-center rounded-full font-medium transition-all hover:opacity-90" href="/contact/" data-i18n="nav.cta">Plan een adviesgesprek</a>
+            <a class="bg-transparent border border-outline-variant text-primary px-6 h-[44px] flex items-center justify-center rounded-full font-medium transition-all hover:bg-surface-variant" href="/contact/" data-i18n="nav.contact">Contact</a>
+          </div>
+        </div>
+        <div class="w-full md:w-[45%] md:max-w-[420px]">
+          <p class="font-body-lg text-body-lg text-secondary-auralis" data-i18n="chat.hero_p">
+            Verbind moeiteloos met klanten via WhatsApp, Instagram en op de website zelf. Een intelligente Chat Agent die vragen direct beantwoordt en trajecten vormgeeft, zodat een simpel bericht altijd kan leiden tot een nieuwe afspraak in de agenda.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO PRODUCT PANEL — VIDEO -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-10 mb-[80px] md:mb-[120px]">
+      <div class="w-full rounded-[16px] md:rounded-[24px] overflow-hidden border border-outline-variant bg-panel-auralis" style="aspect-ratio:16/9;position:relative;">
+        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;">
+          <source src="https://pub-6d418d1898fb4219bf2227841c588d5e.r2.dev/Chatbot%20AI%20Assistent%20video.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- PLATFORM OVERVIEW -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-10 mb-[80px] md:mb-[120px]">
+      <div class="text-center max-w-[600px] mx-auto mb-12 md:mb-16">
+        <h2 class="chat-h2 text-primary mb-6" style="font-family:'Inter',sans-serif;" data-i18n="chat.s2_h2">De Keuze van Tegenwoordig</h2>
+        <p class="font-body-lg text-body-lg text-secondary-auralis" data-i18n="chat.s2_p">
+          Of de klant nu via WhatsApp klaarstaan met een vraag, reageren op Instagram of door een widget op de website gaan; de ervaring is identiek: direct, persoonlijk en perfect inpasbaar binnen de merkidentiteit.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-[60px] mb-12">
+        <div class="bg-panel-auralis rounded-[20px] p-6 md:p-8 border border-outline-variant min-h-[220px] md:h-[300px] flex flex-col relative overflow-hidden group hover:shadow-sm transition-shadow">
+          <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/10 opacity-40 group-hover:opacity-60 transition-opacity"></div>
+          <div class="z-10">
+            <h4 class="font-h3 text-[20px] md:text-[24px] mb-2 text-primary" data-i18n="chat.card1_h">De Support Assistent</h4>
+            <p class="text-[14px] text-secondary-auralis" data-i18n="chat.card1_p">Specifiek ontworpen om de dagelijkse operaties te vereenvoudigen. Van het checken van orders tot het beantwoorden van veelgestelde vragen over prijzen en locaties.</p>
+          </div>
+        </div>
+        <div class="rounded-[20px] p-6 md:p-8 border border-outline-variant min-h-[220px] md:h-[300px] flex flex-col relative overflow-hidden group hover:shadow-sm transition-shadow bg-white">
+          <div class="z-10">
+            <h4 class="font-h3 text-[20px] md:text-[24px] mb-2 text-primary" data-i18n="chat.card2_h">De Groei Assistent</h4>
+            <p class="text-[14px] text-secondary-auralis" data-i18n="chat.card2_p">Dit is de proactieve helper. Het kwalificeert leads, duikt dieper in de behoeften van de klant en stuurt hen direct naar het juiste punt in het proces.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDIO: NAADLOZE INTEGRATIES -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-10 mb-[80px] md:mb-[120px]">
+      <div class="flex items-center gap-4 mb-10 md:mb-12">
+        <span class="font-label-caps text-label-caps bg-surface-variant text-primary px-3 py-1 rounded-full">_Vexai Studio</span>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-10 md:gap-[60px] mb-12 items-start lg:items-center">
+        <div class="w-full lg:w-[40%]">
+          <h2 class="chat-h2 text-primary leading-tight mb-6" style="font-family:'Inter',sans-serif;" data-i18n="chat.studio_h2">Naadloze Integraties</h2>
+          <p class="font-body-lg text-body-lg text-secondary-auralis" data-i18n="chat.studio_p">Onze intelligente assistenten integreren naadloos met de platformen die je al dagelijks gebruikt. Van WhatsApp tot Instagram DM: jouw business is vanaf nu 24/7 bereikbaar.</p>
+        </div>
+        <div class="w-full lg:w-[60%] flex flex-col gap-4 md:gap-6">
+          <div class="grid grid-cols-2 gap-4 md:gap-6">
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-[16px] md:rounded-[20px] p-5 md:p-6 border border-outline-variant h-[160px] md:h-[220px] flex flex-col justify-end">
+              <h4 class="font-medium text-[16px] md:text-[20px] text-primary">WhatsApp</h4>
+            </div>
+            <div class="bg-white rounded-[16px] md:rounded-[20px] p-5 md:p-6 border border-outline-variant h-[160px] md:h-[220px] flex flex-col justify-end shadow-sm">
+              <h4 class="font-medium text-[16px] md:text-[20px] text-primary">Website Widget</h4>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 md:gap-6">
+            <div class="bg-panel-auralis rounded-[12px] md:rounded-[16px] p-4 md:p-5 border border-outline-variant flex flex-col justify-end h-[100px] md:h-[140px]">
+              <span class="font-medium text-[12px] md:text-[14px]">Instagram DM</span>
+            </div>
+            <div class="bg-panel-auralis rounded-[12px] md:rounded-[16px] p-4 md:p-5 border border-outline-variant flex flex-col justify-end h-[100px] md:h-[140px]">
+              <span class="font-medium text-[12px] md:text-[14px]">Facebook Messenger</span>
+            </div>
+            <div class="bg-panel-auralis rounded-[12px] md:rounded-[16px] p-4 md:p-5 border border-outline-variant flex flex-col justify-end h-[100px] md:h-[140px]">
+              <span class="font-medium text-[12px] md:text-[14px]">10+ platformen</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENTS: LANCEER JOUW AI -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-10 mb-[80px] md:mb-[120px]">
+      <div class="flex items-center gap-4 mb-10 md:mb-12">
+        <span class="font-label-caps text-label-caps bg-surface-variant text-primary px-3 py-1 rounded-full">_Vexai Agents</span>
+      </div>
+      <div class="flex flex-col lg:flex-row-reverse gap-10 md:gap-[60px] items-start lg:items-center">
+        <div class="w-full lg:w-[40%]">
+          <h2 class="chat-h2 text-primary leading-tight mb-6" style="font-family:'Inter',sans-serif;" data-i18n="chat.agents_h2">Lanceer Jouw AI-Assistent</h2>
+          <p class="font-body-lg text-body-lg text-secondary-auralis" data-i18n="chat.agents_p">Klanten willen geen formulier invullen; ze willen praten. Onze Chat Agents zorgen ervoor dat een simpel bericht van een klant direct wordt omgezet in een volledige afspraak in de agenda.</p>
+        </div>
+        <div class="w-full lg:w-[60%] flex flex-col sm:flex-row gap-4 md:gap-6">
+          <!-- Chat UI preview -->
+          <div class="flex-1 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-[16px] md:rounded-[20px] p-5 md:p-6 border border-outline-variant h-[280px] md:h-[360px] flex flex-col relative overflow-hidden">
+            <div class="mt-auto flex flex-col gap-3 md:gap-4 z-10">
+              <div class="bg-white px-3 md:px-4 py-2.5 md:py-3 rounded-[14px] rounded-tl-sm text-[13px] md:text-[14px] shadow-sm max-w-[85%] border border-outline-variant">
+                Hoi! Ik zag je portfolio en ik wil graag een fotoshoot inplannen!
+              </div>
+              <div class="bg-primary text-white px-3 md:px-4 py-2.5 md:py-3 rounded-[14px] rounded-tr-sm text-[13px] md:text-[14px] max-w-[85%] self-end">
+                Wat super leuk dat je me gevonden hebt! Gaan we regelen!
+              </div>
+            </div>
+          </div>
+          <!-- Stats card -->
+          <div class="flex-1 bg-white rounded-[16px] md:rounded-[20px] p-5 md:p-6 border border-outline-variant h-[200px] sm:h-[280px] md:h-[360px] flex flex-col shadow-sm">
+            <div class="h-1/2 border-b border-outline-variant flex items-end pb-4">
+              <div class="w-full h-2 bg-panel-auralis rounded-full overflow-hidden relative">
+                <div class="absolute left-0 top-0 h-full w-2/3 bg-primary rounded-full"></div>
+              </div>
+            </div>
+            <div class="mt-auto">
+              <h4 class="font-medium text-[18px] md:text-[20px] text-primary mb-1" data-i18n="chat.stats_h">Responstijd</h4>
+              <p class="text-[13px] md:text-[14px] text-secondary-auralis" data-i18n="chat.stats_p">Altijd een vloeiend antwoord binnen 5 seconden</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="max-w-[1240px] mx-auto px-5 md:px-10 mb-[60px] md:mb-[120px] text-center">
+      <h2 class="chat-h2 text-primary mb-6 font-bold" style="font-family:'Inter',sans-serif;" data-i18n="chat.final_h2">Klaar om aan de toekomst te bouwen?</h2>
+      <a class="text-white px-8 h-[44px] inline-flex items-center justify-center rounded-full font-medium transition-all hover:opacity-90 bg-primary" href="/contact/" data-i18n="chat.final_btn">Begin nu met _Vexai</a>
+    </section>
+
+  </main>
+</Layout>
