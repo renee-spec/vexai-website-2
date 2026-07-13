@@ -321,3 +321,28 @@ textarea.vexai-input { resize: none; min-height: 60px; }
   }
   .vexai-launcher { right: 16px; bottom: 16px; }
 }
+
+/* === v2 chip styles for agenda slots === */
+.vexai-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 4px;
+  padding: 0;
+}
+.vexai-chip {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f1f1f4;
+  color: #1a1a1a;
+  font-size: 12px;
+  font-family: inherit;
+  border: 1px solid #e0e0e3;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.vexai-chip:hover { background: #e8e8ec; }
+.vexai-chip.is-selected { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.vexai-chip:disabled { opacity: 0.5; cursor: not-allowed; }
+.vexai-fallback-note { font-size: 11px; color: #888; margin-top: 4px; }
