@@ -153,6 +153,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.vexai.nl');
     /* Services dropdown */
     .services-dropdown { pointer-events: none; }
     .services-group:hover .services-dropdown { pointer-events: auto; }
+    /* No gap between trigger and panel — prevents mouseleave firing when crossing */
+    .services-group { padding-bottom: 8px; margin-bottom: -8px; }
     /* Mobile menu transition */
     #mobileMenu { overflow: hidden; }
   </style>
@@ -186,8 +188,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.vexai.nl');
               <span class="material-symbols-outlined text-[18px] transition-transform duration-200 nav-services-arrow" style="line-height:1;margin-top:1px;">expand_more</span>
             </button>
             <!-- Dropdown panel -->
-            <div class="services-dropdown absolute top-full left-0 mt-3 bg-white rounded-2xl shadow-xl border border-outline-variant py-2 opacity-0 group-hover:opacity-100 invisible min-w-[160px] z-50 transition-all duration-200"
-              style="transition:opacity 0.15s ease,visibility 0.15s ease;">
+            <div class="services-dropdown absolute top-full left-0 mt-0 bg-white rounded-2xl shadow-xl border border-outline-variant py-2 opacity-0 group-hover:opacity-100 invisible min-w-[160px] z-50 transition-all duration-200"
+              style="transition:opacity 0.12s ease,visibility 0.12s ease;margin-top:8px;">
               <a href="/chat-ai/" class="flex items-center px-4 py-2.5 text-[14px] text-on-surface hover:bg-surface-container transition-colors" data-i18n="nav.chat_ai">Chat AI</a>
               <a href="/telefoon-ai/" class="flex items-center px-4 py-2.5 text-[14px] text-on-surface hover:bg-surface-container transition-colors" data-i18n="nav.phone_ai">Telefoon AI</a>
             </div>
@@ -531,28 +533,56 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.vexai.nl');
     var servicesDropdown = servicesGroup ? servicesGroup.querySelector('.services-dropdown') : null;
 
     if (servicesGroup && servicesDropdown) {
-      servicesGroup.addEventListener('mouseenter', function() {
+      var closeTimer = null;
+      function openDropdown() {
+        if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
         servicesDropdown.style.opacity = '1';
         servicesDropdown.style.visibility = 'visible';
-      });
-      servicesGroup.addEventListener('mouseleave', function() {
+        var arrow = servicesGroup.querySelector('.nav-services-arrow');
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+      }
+      function closeDropdown() {
+        var arrow = servicesGroup.querySelector('.nav-services-arrow');
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
         servicesDropdown.style.opacity = '0';
         servicesDropdown.style.visibility = 'hidden';
-      });
+      }
+      function scheduleClose() {
+        if (closeTimer) clearTimeout(closeTimer);
+        // 250ms grace period so the cursor can travel from trigger to panel
+        closeTimer = setTimeout(closeDropdown, 250);
+      }
+      servicesGroup.addEventListener('mouseenter', openDropdown);
+      servicesGroup.addEventListener('mouseleave', scheduleClose);
+      // If the user moves into the dropdown itself, cancel the pending close
+      servicesDropdown.addEventListener('mouseenter', openDropdown);
+      servicesDropdown.addEventListener('mouseleave', scheduleClose);
       // Also support click toggle for accessibility
       var servicesBtn = servicesGroup.querySelector('.nav-services-btn');
       if (servicesBtn) {
         servicesBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
           var isVisible = servicesDropdown.style.visibility === 'visible';
-          servicesDropdown.style.opacity = isVisible ? '0' : '1';
-          servicesDropdown.style.visibility = isVisible ? 'hidden' : 'visible';
+          if (isVisible) {
+            closeDropdown();
+          } else {
+            if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+            openDropdown();
+          }
         });
       }
       // Close on outside click
       document.addEventListener('click', function(e) {
         if (!servicesGroup.contains(e.target)) {
-          servicesDropdown.style.opacity = '0';
-          servicesDropdown.style.visibility = 'hidden';
+          if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+          closeDropdown();
+        }
+      });
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+          closeDropdown();
         }
       });
     }
