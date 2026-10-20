@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.vexai.nl/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.vexai.nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vexai.nl/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vexai.nl/" />
+  </url>
+  <url>
+    <loc>https://www.vexai.nl/en</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.vexai.nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vexai.nl/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.vexai.nl/" />
+  </url>
+  <url>
+    <loc>https://www.vexai.nl/voorwaarden</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.vexai.nl/voorwaarden" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vexai.nl/en/terms" />
+  </url>
+  <url>
+    <loc>https://www.vexai.nl/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.vexai.nl/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vexai.nl/en/privacy" />
+  </url>
+  <url>
+    <loc>https://www.vexai.nl/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.vexai.nl/voorwaarden" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vexai.nl/en/terms" />
+  </url>
+  <url>
+    <loc>https://www.vexai.nl/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.vexai.nl/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.vexai.nl/en/privacy" />
+  </url>
+</urlset>
